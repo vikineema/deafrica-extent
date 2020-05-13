@@ -24,7 +24,7 @@ africa_unioned = unary_union(africa_shapely)
 # Create a convex hull (minimum bounding shape)
 africa_convex_hull = africa_unioned.convex_hull
 # Buffer it by 2 degrees (means we get an extra scene around the coastlines)
-africa_hull_buffer = africa_convex_hull.buffer(2.0)
+africa_hull_buffer = africa_convex_hull.buffer(1.0)
 
 # Define a schema to write to
 schema = {
