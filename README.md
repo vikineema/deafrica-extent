@@ -16,4 +16,4 @@ Notes:
 - The African areas are unioned, then a convex hull is created
 - This resulting convex hull is buffered by 2 degrees.
 
-The derived dataset [africa-extent.json](africa-extent.json) is derived from Natural Earth, which is in the public domain, see: https://www.naturalearthdata.com/about/.
+The derived dataset [africa-extent.json](africa-extent.json) is derived from Natural Earth, which is in the public domain, see: [https://www.naturalearthdata.com/about/](https://www.naturalearthdata.com/about/).
