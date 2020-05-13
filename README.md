@@ -7,10 +7,10 @@ to manually download the [Natural Earth admin 0 countries dataset](https://www.n
 To run the process with Make, do the following:
 
 - `make get-natural-earth`  (downloads the source data)
-- `make extract-africa-hull` (extracts Africa and creates a buffered convex hull)
+- `make extract-africa-hull` (extracts Africa and creates a buffered convex hull).
 
 Notes:
-- Africa is defined as data that has "REGIONS_UN = Africa" in the NE dataset
+- Africa is defined as features that have "REGIONS_UN = Africa" in the NE dataset
 - The African areas are unioned, then a convex hull is created
 - This resulting convex hull is buffered by 2 degrees.
 
