@@ -14,9 +14,10 @@ dest_dataset = 'africa-extent.json'
 def africa_region_un(rec):
     return rec['properties'].get('REGION_UN') == 'Africa'
 
+def filter_further(rec):
 # Open the data, filter it and turn it into a list of Shapely features
 world = fiona.open(source_dataset)
-africa = filter(africa_region_un, world)
+africa_filtered = filter(filter_further, africa)
 africa_shapely = [shape(c['geometry']) for c in africa]
 
 # Union the file (merge all the features together)
