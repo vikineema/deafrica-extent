@@ -15,6 +15,10 @@ def africa_region_un(rec):
     return rec['properties'].get('REGION_UN') == 'Africa'
 
 def filter_further(rec):
+    # Filtering out Saint Helena based on Adam Lewis' email 13 May 2020
+    return rec['properties'].get('NAME') != 'Saint Helena'
+africa = filter(africa_region_un, world)
+
 # Open the data, filter it and turn it into a list of Shapely features
 world = fiona.open(source_dataset)
 africa_filtered = filter(filter_further, africa)
