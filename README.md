@@ -1,4 +1,5 @@
 # Digital Earth Africa Extent Polygon
+
 A process of identifying a boundary polygon for working with satellite data over Africa.
 
 To run this process you need Python 3 with Shapely and Fiona installed and either wget or 
@@ -10,6 +11,7 @@ To run the process with Make, do the following:
 - `make extract-africa-hull` (extracts Africa and creates a buffered convex hull).
 
 Notes:
+
 - Africa is defined as features that have "REGIONS_UN = Africa" in the NE dataset
 - The African areas are unioned, then a convex hull is created
 - This resulting convex hull is buffered by 2 degrees.
