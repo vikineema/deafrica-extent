@@ -7,7 +7,7 @@ from shapely.ops import unary_union
 from shapely.geometry import shape, mapping
 
 # Don't even bother extracting the data, we can read the shapefile
-source_dataset = '/vsizip/data/ne_10m_admin_0_countries_lakes.zip'
+source_dataset = '/vsizip/data/ne_10m_admin_0_countries.zip'
 source_exclusions = 'data/exclusions.json'
 
 dest_dataset = 'africa-extent.json'
