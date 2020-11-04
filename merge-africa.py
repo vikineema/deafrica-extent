@@ -45,6 +45,10 @@ schema = {
     'geometry': 'Polygon',
     'properties': {'id': 'int'},
 }
+schema_bbox = {
+    'geometry': 'Polygon',
+    'properties': {'id': 'int', 'bbox': 'str'},
+}
 
 # And write the output to geojson
 with fiona.open(dest_dataset, 'w', 'GeoJSON', schema) as out:
@@ -54,8 +58,11 @@ with fiona.open(dest_dataset, 'w', 'GeoJSON', schema) as out:
     })
 
 # Also write the bbox, because why not?!
-with fiona.open(dest_bbox, 'w', 'GeoJSON', schema) as out:
+with fiona.open(dest_bbox, 'w', 'GeoJSON', schema_bbox) as out:
     out.write({
         'geometry': mapping(africa_hull_buffer_exclusions.envelope),
-        'properties': {'id': 1},
+        'properties': {
+            'id': 1,
+            'bbox': str(africa_hull_buffer_exclusions.envelope.bounds)
+            },
     })
