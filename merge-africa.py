@@ -11,6 +11,7 @@ source_dataset = '/vsizip/data/ne_10m_admin_0_countries_lakes.zip'
 source_exclusions = 'data/exclusions.json'
 
 dest_dataset = 'africa-extent.json'
+dest_bbox = 'africa-extent-bbox.json'
 
 # Filter for Africa
 def africa_region_un(rec):
@@ -49,5 +50,12 @@ schema = {
 with fiona.open(dest_dataset, 'w', 'GeoJSON', schema) as out:
     out.write({
         'geometry': mapping(africa_hull_buffer_exclusions),
+        'properties': {'id': 1},
+    })
+
+# Also write the bbox, because why not?!
+with fiona.open(dest_bbox, 'w', 'GeoJSON', schema) as out:
+    out.write({
+        'geometry': mapping(africa_hull_buffer_exclusions.envelope),
         'properties': {'id': 1},
     })
