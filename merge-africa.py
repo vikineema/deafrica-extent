@@ -11,6 +11,7 @@ source_dataset = '/vsizip/data/ne_10m_admin_0_countries.zip'
 source_exclusions = 'data/exclusions.json'
 
 dest_dataset = 'africa-extent.json'
+dest_bbox = 'africa-extent-bbox.json'
 
 # Filter for Africa
 def africa_region_un(rec):
@@ -42,12 +43,20 @@ africa_hull_buffer_exclusions = africa_hull_buffer.difference(exclusions_shapely
 # Define a schema to write to
 schema = {
     'geometry': 'Polygon',
-    'properties': {'id': 'int'},
+    'properties': {'bbox': 'str'},
 }
 
 # And write the output to geojson
 with fiona.open(dest_dataset, 'w', 'GeoJSON', schema) as out:
     out.write({
         'geometry': mapping(africa_hull_buffer_exclusions),
-        'properties': {'id': 1},
+        'properties': {'bbox': str(africa_hull_buffer_exclusions.envelope.bounds)}
+        }
+    )
+
+# Also write the bbox, because why not?!
+with fiona.open(dest_bbox, 'w', 'GeoJSON', schema) as out:
+    out.write({
+        'geometry': mapping(africa_hull_buffer_exclusions.envelope),
+        'properties': {'bbox': str(africa_hull_buffer_exclusions.envelope.bounds)}
     })
