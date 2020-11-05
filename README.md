@@ -10,6 +10,10 @@ To run the process with Make, do the following:
 - `make get-natural-earth`  (downloads the source data)
 - `make extract-africa-hull` (extracts Africa and creates a buffered convex hull).
 
+And to extract the CSV of MGRS tiles, do:
+
+- `make extract-mgrs-codes`.
+
 Notes:
 
 - Africa is defined as features that have "REGIONS_UN = Africa" in the NE dataset

@@ -5,5 +5,5 @@ get-natural-earth:
 extract-africa-hull:
 	python3 ./merge-africa.py
 
-list-mgrs-codes:
+extract-mgrs-codes:
 	python3 ./extract-mgrs.py
