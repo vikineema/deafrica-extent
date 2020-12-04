@@ -7,3 +7,6 @@ extract-africa-hull:
 
 extract-mgrs-codes:
 	python3 ./extract-mgrs.py
+
+extract-pathrows:
+	python3 ./extract-pathrows.py
