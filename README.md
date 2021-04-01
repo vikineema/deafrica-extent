@@ -18,6 +18,7 @@ Notes:
 
 - Africa is defined as features that have "REGIONS_UN = Africa" in the NE dataset
 - The African areas are unioned, then a convex hull is created
-- This resulting convex hull is buffered by 1 degree.
+- This resulting convex hull is buffered by 1 degree
+- Some areas are excluded, see [exclusions.json](data/exclusions.json).
 
 The derived dataset [africa-extent.json](africa-extent.json) is derived from Natural Earth, which is in the public domain, see: [https://www.naturalearthdata.com/about/](https://www.naturalearthdata.com/about/).
