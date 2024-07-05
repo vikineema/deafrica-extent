@@ -1,34 +1,34 @@
 #!/usr/bin/env python3
-
-import shapely
-import fiona
-
 import csv
 import gzip
-from shapely.geometry import shape, mapping
+
+import fiona
+from shapely.geometry import shape
 
 # Source data
-africa_extent = 'africa-extent.json'
-all_mgrs = '/vsizip/data/sentinel_2_tiles_africa.zip'
+kenya_extent = "kenya-extent.json"
+all_mgrs = "/vsizip/data/sentinel_2_tiles_africa.zip"
 
-out_csv = 'deafrica-mgrs-tiles.csv.gz'
+out_csv = "dekenya-mgrs-tiles.csv.gz"
 
 # Open the data, filter it and turn it into a list of Shapely features
-africa_fiona = fiona.open(africa_extent)
+kenya_fiona = fiona.open(kenya_extent)
 mgrs = fiona.open(all_mgrs)
 
-africa = shape(next(iter(africa_fiona))['geometry'])
+kenya = shape(next(iter(kenya_fiona))["geometry"])
 
-# Filter for Africa
-def africa_region(rec):
-    return shape(rec['geometry']).intersects(africa)
 
-mgrs_africa = filter(africa_region, mgrs)
+# Filter for Kenya
+def kenya_region(rec):
+    return shape(rec["geometry"]).intersects(kenya)
+
+
+mgrs_kenya = filter(kenya_region, mgrs)
 
 with gzip.open(out_csv, "wt") as f:
     csvwriter = csv.writer(f)
-    for feature in mgrs_africa:
-        csvwriter.writerow([feature['properties']['Name']])
+    for feature in mgrs_kenya:
+        csvwriter.writerow([feature["properties"]["Name"]])
 
 
 # # Define a schema to write to
