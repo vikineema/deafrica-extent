@@ -1,38 +1,38 @@
-
-import shapely
-import fiona
-
 import csv
 import gzip
-from shapely.geometry import shape, mapping
+
+import fiona
+from shapely.geometry import shape
 
 # Source data
-africa_extent = 'africa-extent.json'
-all_pathrows = '/vsizip/vsicurl/https://prd-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/WRS2_descending_0.zip'
+kenya_extent = "kenya-extent.json"
+all_pathrows = "/vsizip/vsicurl/https://prd-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/WRS2_descending_0.zip"
 
-out_csv = 'deafrica-usgs-pathrows.csv.gz'
+out_csv = "dekenya-usgs-pathrows.csv.gz"
 
 # Open the data, filter it and turn it into a list of Shapely features
-africa_fiona = fiona.open(africa_extent)
+kenya_fiona = fiona.open(kenya_extent)
 pathrows = fiona.open(all_pathrows)
 
-africa = shape(next(iter(africa_fiona))['geometry'])
+kenya = shape(next(iter(kenya_fiona))["geometry"])
 
-# Filter for Africa
-def africa_region(rec):
-    return shape(rec['geometry']).intersects(africa)
 
-pathrows_africa = filter(africa_region, pathrows)
+# Filter for Kenya
+def kenya_region(rec):
+    return shape(rec["geometry"]).intersects(kenya)
+
+
+pathrows_kenya = filter(kenya_region, pathrows)
 
 with gzip.open(out_csv, "wt") as f:
     csvwriter = csv.writer(f)
-    for feature in pathrows_africa:
-        csvwriter.writerow([feature['properties']['PR']])
+    for feature in pathrows_kenya:
+        csvwriter.writerow([feature["properties"]["PR"]])
 
 # # Define a schema to write to
 # schema = pathrows.schema
 
-# # And write the output to geojson
+# # And writmgrs_africae the output to geojson
 # with fiona.open('test.geojson', 'w', 'GeoJSON', schema) as out:
 #     for f in pathrows_africa:
 #         out.write(f)
