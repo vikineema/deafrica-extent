@@ -5,6 +5,9 @@ from shapely.geometry import mapping, shape
 from shapely.ops import unary_union
 
 # Don't even bother extracting the data, we can read the shapefile
+import os
+print(os.getcwd())
+
 source_dataset = "/vsizip/data/ne_10m_admin_0_countries.zip"
 source_exclusions = "data/exclusions.json"
 
@@ -18,7 +21,7 @@ def filter_by_name(rec):
 
 
 # Open the data, filter it and turn it into a list of Shapely features
-world = fiona.open(source_dataset)
+world = fiona.open(source_dataset, mode="r", driver="ESRI Shapefile")
 kenya = filter(filter_by_name, world)
 kenya_shapely = [shape(c["geometry"]) for c in kenya]
 
