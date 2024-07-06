@@ -6,7 +6,8 @@ from shapely.geometry import shape
 
 # Source data
 kenya_extent = "kenya-extent.json"
-all_pathrows = "/vsizip/vsicurl/https://prd-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/WRS2_descending_0.zip"
+# Changed url see https://cran.rediris.es/web/packages/ecochange/NEWS
+all_pathrows = "/vsizip/vsicurl/https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/WRS2_descending_0.zip"
 
 out_csv = "dekenya-usgs-pathrows.csv.gz"
 
