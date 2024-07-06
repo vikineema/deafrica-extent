@@ -16,7 +16,7 @@ And to extract the CSV of MGRS tiles, do:
 
 Notes:
 
-- Kenay is defined as features that have "Name = Kenya" in the NE dataset
+- Kenya is defined as features that have "Name = Kenya" in the NE dataset
 - The Kenya areas are unioned, then a convex hull is created
 - This resulting convex hull is buffered by 1 degree
 - Some areas are excluded, see [exclusions.json](data/exclusions.json).
