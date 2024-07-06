@@ -2,8 +2,7 @@
 
 A process of identifying a boundary polygon for working with satellite data over Kenya
 
-To run this process you need Python 3 with Shapely and Fiona installed and either curl or 
-to manually download the [Natural Earth admin 0 countries dataset](https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip).
+To run this process you need Python 3 with Shapely and Fiona installed and either curl to download the [Natural Earth admin 0 countries dataset](https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip) dataset or you can manually download it. 
 
 To run the process with Make, do the following:
 
